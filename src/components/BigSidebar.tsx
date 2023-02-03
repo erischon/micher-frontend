@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import Logo from "../components/Logo";
+import Logo from "./Logo";
 import Wrapper from "../assets/wrappers/BigSidebar";
 
 import NavLinks from "./NavLinks";
