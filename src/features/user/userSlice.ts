@@ -1,7 +1,7 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 
-import customAxios from "../../utils/axios";
+import { registerUser, loginUser, updateUser } from "./userActions";
 import {
   addUserToLocalStorage,
   getUserFromLocalStorage,
@@ -13,52 +13,6 @@ const initialState = {
   isSidebarOpen: false,
   user: getUserFromLocalStorage(),
 };
-
-export const registerUser = createAsyncThunk(
-  "user/registerUser",
-  async (user: any, thunkAPI: any) => {
-    try {
-      const resp = await customAxios.post("/auth/register", user);
-      return resp.data;
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data.msg);
-    }
-  }
-);
-
-export const loginUser = createAsyncThunk(
-  "user/loginUser",
-  async (user: any, thunkAPI: any) => {
-    try {
-      const resp = await customAxios.post("/auth/login", user);
-      return resp.data;
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data.msg);
-    }
-  }
-);
-
-export const updateUser = createAsyncThunk(
-  "user/updateUser",
-  async (user: any, thunkAPI: any) => {
-    try {
-      const resp = await customAxios.patch("/auth/updateUser", user, {
-        headers: {
-          authorization: `Bearer ${thunkAPI.getState().user.user.token}`,
-        },
-      });
-      return resp.data;
-    } catch (error: any) {
-      // console.log(error.response);
-      if (error.response.status === 401) {
-        thunkAPI.dispatch(logoutUser());
-        return thunkAPI.rejectWithValue("Unauthorized! Logging Out...");
-      }
-
-      return thunkAPI.rejectWithValue(error.response.data.msg);
-    }
-  }
-);
 
 const userSlice = createSlice({
   name: "user",

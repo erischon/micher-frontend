@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { loginUser, registerUser } from "../features/user/userSlice";
+import { loginUser, registerUser } from "../features/user/userActions";
 import { FormRow, Logo } from "../components";
 import Wrapper from "../assets/wrappers/RegisterPage";
 import { RootState, AppDispatch } from "../app/store";

@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 import Wrapper from "../../assets/wrappers/DashboardFormPage";
 import { FormRow } from "../../components";
-import { updateUser } from "../../features/user/userSlice";
+import { updateUser } from "../../features/user/userActions";
 import { RootState, AppDispatch } from "../../app/store";
 
 const Profile = () => {
