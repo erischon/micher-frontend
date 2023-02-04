@@ -16,7 +16,7 @@ const initialState = {
 
 export const registerUser = createAsyncThunk(
   "user/registerUser",
-  async (user, thunkAPI) => {
+  async (user: any, thunkAPI: any) => {
     try {
       const resp = await customAxios.post("/auth/register", user);
       return resp.data;
@@ -28,7 +28,7 @@ export const registerUser = createAsyncThunk(
 
 export const loginUser = createAsyncThunk(
   "user/loginUser",
-  async (user, thunkAPI) => {
+  async (user: any, thunkAPI: any) => {
     try {
       const resp = await customAxios.post("/auth/login", user);
       return resp.data;
