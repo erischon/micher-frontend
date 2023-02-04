@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { loginUser, registerUser } from "../features/user/userSlice";
 import { FormRow, Logo } from "../components";
 import Wrapper from "../assets/wrappers/RegisterPage";
+import { RootState, AppDispatch } from "../app/store";
 
 const initialState = {
   name: "",
@@ -15,19 +16,19 @@ const initialState = {
 };
 
 function Register() {
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
 
   const [values, setValues] = useState(initialState);
-  const { isLoading, user } = useSelector((store) => store.user);
+  const { isLoading, user } = useSelector((store: RootState) => store.user);
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const name = e.target.name;
     const value = e.target.value;
     setValues({ ...values, [name]: value });
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = (e: any) => {
     e.preventDefault();
     const { name, email, password, isMember } = values;
     if (!email || !password || (!isMember && !name)) {

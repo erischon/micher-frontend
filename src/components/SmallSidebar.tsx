@@ -8,9 +8,10 @@ import Wrapper from "../assets/wrappers/SmallSidebar";
 import Logo from "./Logo";
 import links from "../utils/links";
 import NavLinks from "./NavLinks";
+import { RootState } from "../app/store";
 
 export const SmallSidebar = () => {
-  const { isSidebarOpen } = useSelector((store) => store.user);
+  const { isSidebarOpen } = useSelector((store: RootState) => store.user);
 
   const dispatch = useDispatch();
   const toggle = () => {

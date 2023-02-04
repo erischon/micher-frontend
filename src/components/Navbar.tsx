@@ -7,11 +7,12 @@ import Logo from "./Logo";
 
 import { useDispatch, useSelector } from "react-redux";
 import { toggleSidebar, logoutUser } from "../features/user/userSlice";
+import { RootState } from "../app/store";
 
 const Navbar = () => {
   const dispatch = useDispatch();
 
-  const { user } = useSelector((store) => store.user);
+  const { user } = useSelector((store: RootState) => store.user);
   const [showLogout, setShowLogout] = useState(false);
 
   const toggle = () => {

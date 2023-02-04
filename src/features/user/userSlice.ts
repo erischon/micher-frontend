@@ -20,7 +20,7 @@ export const registerUser = createAsyncThunk(
     try {
       const resp = await customAxios.post("/auth/register", user);
       return resp.data;
-    } catch (error) {
+    } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.msg);
     }
   }
@@ -32,7 +32,7 @@ export const loginUser = createAsyncThunk(
     try {
       const resp = await customAxios.post("/auth/login", user);
       return resp.data;
-    } catch (error) {
+    } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.msg);
     }
   }
@@ -40,7 +40,7 @@ export const loginUser = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
   "user/updateUser",
-  async (user, thunkAPI) => {
+  async (user: any, thunkAPI: any) => {
     try {
       const resp = await customAxios.patch("/auth/updateUser", user, {
         headers: {
@@ -48,7 +48,7 @@ export const updateUser = createAsyncThunk(
         },
       });
       return resp.data;
-    } catch (error) {
+    } catch (error: any) {
       console.log(error.response);
       return thunkAPI.rejectWithValue(error.response.data.msg);
     }
@@ -80,7 +80,7 @@ const userSlice = createSlice({
         addUserToLocalStorage(user);
         toast.success(`Hello There ${user.name}`);
       })
-      .addCase(registerUser.rejected, (state, { payload }) => {
+      .addCase(registerUser.rejected, (state, { payload }: any) => {
         state.isLoading = false;
         toast.error(payload);
       })
@@ -94,7 +94,7 @@ const userSlice = createSlice({
         addUserToLocalStorage(user);
         toast.success(`Welcome Back ${user.name}`);
       })
-      .addCase(loginUser.rejected, (state, { payload }) => {
+      .addCase(loginUser.rejected, (state, { payload }: any) => {
         state.isLoading = false;
         toast.error(payload);
       })
@@ -109,7 +109,7 @@ const userSlice = createSlice({
         addUserToLocalStorage(user);
         toast.success("User Updated");
       })
-      .addCase(updateUser.rejected, (state, { payload }) => {
+      .addCase(updateUser.rejected, (state, { payload }: any) => {
         state.isLoading = false;
         toast.error(payload);
       });

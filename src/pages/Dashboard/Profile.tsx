@@ -5,11 +5,12 @@ import { toast } from "react-toastify";
 import Wrapper from "../../assets/wrappers/DashboardFormPage";
 import { FormRow } from "../../components";
 import { updateUser } from "../../features/user/userSlice";
+import { RootState, AppDispatch } from "../../app/store";
 
 const Profile = () => {
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
-  const { isLoading, user } = useSelector((store) => store.user);
+  const { isLoading, user } = useSelector((store: RootState) => store.user);
   const [userData, setUserData] = useState({
     name: user?.name || "",
     email: user?.email || "",
@@ -17,7 +18,7 @@ const Profile = () => {
     location: user?.location || "",
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     const { name, email, lastName, location } = userData;
 
@@ -30,7 +31,7 @@ const Profile = () => {
     dispatch(updateUser({ name, email, lastName, location }));
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const name = e.target.name;
     const value = e.target.value;
 

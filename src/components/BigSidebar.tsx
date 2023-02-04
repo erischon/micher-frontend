@@ -2,11 +2,12 @@ import { useSelector } from "react-redux";
 
 import Logo from "./Logo";
 import Wrapper from "../assets/wrappers/BigSidebar";
+import { RootState } from "../app/store";
 
 import NavLinks from "./NavLinks";
 
 const BigSidebar = () => {
-  const { isSidebarOpen } = useSelector((store) => store.user);
+  const { isSidebarOpen } = useSelector((store: RootState) => store.user);
 
   return (
     <Wrapper>
