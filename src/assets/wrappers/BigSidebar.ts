@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const Wrapper = styled.aside`
   display: none;
@@ -25,6 +25,9 @@ const Wrapper = styled.aside`
       display: flex;
       align-items: center;
       padding-left: 2.5rem;
+    }
+    .logo {
+      max-width: 75%;
     }
     .nav-links {
       padding-top: 2rem;
@@ -62,5 +65,5 @@ const Wrapper = styled.aside`
       color: var(--primary-500);
     }
   }
-`
-export default Wrapper
+`;
+export default Wrapper;
